@@ -1,0 +1,11 @@
+plugin:
+    name: 'freelance.service::lang.plugin.name'
+    description: 'freelance.service::lang.plugin.description'
+    author: freelance
+    icon: oc-icon-server
+    homepage: ''
+navigation:
+    Service:
+        label: services
+        url: freelance/service/service
+        icon: icon-desktop

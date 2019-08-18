@@ -1,0 +1,38 @@
+title = "settings"
+url = "/settings"
+layout = "default"
+is_hidden = 0
+
+[account]
+paramCode = "code"
+forceSecure = 0
+==
+<div class="header-about">
+        <div class="container text-center">
+          <h1>المعلومات الشخصية</h1>
+        </div>
+      </div>
+
+<div class="container">
+{% if not user %}
+
+
+{% else %}
+
+
+    <div class="row">
+
+        <div class="form_registre sign-up">
+        <div class="form_section">
+
+    {% partial account ~ '::activation_check' %}
+
+    {% partial account ~ '::update' %}
+
+    {% partial account ~ '::deactivate_link' %}
+    
+    </div>
+    </div>
+    </div>
+
+{% endif %}

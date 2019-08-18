@@ -1,0 +1,10 @@
+name: Service
+form: $/freelance/service/models/service/fields.yaml
+modelClass: Freelance\Service\Models\Service
+defaultRedirect: freelance/service/service
+create:
+    redirect: 'freelance/service/service/update/:id'
+    redirectClose: freelance/service/service
+update:
+    redirect: freelance/service/service
+    redirectClose: freelance/service/service

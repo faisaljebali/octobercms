@@ -1,0 +1,22 @@
+fields:
+    titre:
+        label: Titre
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        span: auto
+        preset:
+            field: titre
+            type: slug
+        type: text
+    description:
+        label: Description
+        span: full
+        size: ''
+        type: richeditor
+    more_info:
+        label: 'More info'
+        span: full
+        size: ''
+        type: textarea

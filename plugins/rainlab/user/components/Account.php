@@ -182,15 +182,21 @@ class Account extends ComponentBase
 
             $rules['login'] = $this->loginAttribute() == UserSettings::LOGIN_USERNAME
                 ? 'required|between:2,255'
-                : 'required|email|between:6,255';
+                : 'required|email';
 
-            $rules['password'] = 'required|between:4,255';
+            $rules['password'] = 'required';
 
             if (!array_key_exists('login', $data)) {
                 $data['login'] = post('username', post('email'));
             }
 
-            $validation = Validator::make($data, $rules);
+            $messages = [
+                'login.required' => "لم تدخل بريدك الالكتروني بعد",
+                'login.email' => "البريد الالكتروني الذي أدخلته غير صحيح",
+                'password.required' => "لم تدخل كلمة مرور بعد",
+            ];    
+
+            $validation = Validator::make($data, $rules, $messages);
             if ($validation->fails()) {
                 throw new ValidationException($validation);
             }
@@ -250,27 +256,52 @@ class Account extends ComponentBase
         }
 
         $rules = [
-            'email'    => 'required|email|between:6,255',
-            'password' => 'required|between:4,255|confirmed'
+            'name'     => 'required',
+            'last_name'     => 'required',
+            'email'    => 'required|email|unique:users',
+            'password' => 'required|between:8,255|confirmed',
+            'type'     => 'required',
         ];
 
         if ($this->loginAttribute() == UserSettings::LOGIN_USERNAME) {
             $rules['username'] = 'required|between:2,255';
         }
 
-        $validation = Validator::make($data, $rules);
+        $messages = [
+            'last_name.required' =>"اسم العائلة الذي أدخلته قصير جداً. 3 أحرف هو الحد الأدنى",
+            'name.required' =>"الاسم الذي أدخلته قصير جداً. 3 أحرف هو الحد الأدنى",
+            'email.required' => "لم تدخل بريدك الالكتروني بعد",
+            'email.email' => "البريد الالكتروني الذي أدخلته غير صحيح",
+            'email.unique' => "البريد الالكتروني الذي أدخلته مستخدم في حساب آخر",
+            'password.required' => "لم تدخل كلمة مرور بعد",
+            'type.required' =>"لم تختار نوعية الحساب",
+            'password.between' => "كلمة المرور التي اخترتها ضعيفة. اختر كلمة مرور مؤلفة من 8 أحرف على الأقل",
+        ];
+
+        $validation = Validator::make($data, $rules, $messages);
         if ($validation->fails()) {
             throw new ValidationException($validation);
         }
         $requireActivation = UserSettings::get('require_activation', true);
         $automaticActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_AUTO;
         $userActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_USER;
+        $data['name'] = post('name').' '.post('last_name');
         $user = Auth::register($data, $automaticActivation);
-
+        if(post('type') == 1){
+        $user->groups = 1;
+        }else{
+        $user->groups = 2;    
+        }
+        $user->save();
         if (Input::hasFile('avatar')) {
             $user->avatar = Input::file('avatar');
         }
 
+        if ($userActivation) {
+            $this->sendActivationEmail($user);
+
+            Flash::success(Lang::get(/*An activation email has been sent to your email address.*/'rainlab.user::lang.account.activation_email_sent'));
+        }
 
         if ($automaticActivation || !$requireActivation) {
             Auth::login($user);

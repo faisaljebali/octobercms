@@ -149,7 +149,7 @@ class Session extends ComponentBase
 
         Flash::success(Lang::get('rainlab.user::lang.session.logout'));
 
-        return Redirect::to($url);
+        return Redirect::to('/');
     }
 
     /**

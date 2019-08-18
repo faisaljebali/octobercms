@@ -1,0 +1,13 @@
+columns:
+    titre:
+        label: Titre
+        type: text
+    slug:
+        label: Slug
+        type: text
+    category_id:
+        label: Category
+        type: text
+    create_at:
+        label: Date
+        type: date

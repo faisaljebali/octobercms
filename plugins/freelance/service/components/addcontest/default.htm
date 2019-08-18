@@ -1,0 +1,127 @@
+<form data-request="onAddContest" class="contact-form" data-request-validate data-request-flash>
+  
+<div class="form-group">
+    <label>ماذا تريد أن تصمم ؟</label>
+    <select name="category" class="form-control industry-select">
+    <option value="logo-design">تصميم شعار</option>
+    <option value="cover-design">أغلفة كتب ومجلات</option>
+    <option value="busnes-design">تصميم بطاقات أعمال</option>
+    <option value="website-design">تصميم قوالب لمواقع</option>
+    <option value="tshirt-design">تصميم تي شيرت</option>
+    </select>
+    <span data-validate-for="category"></span>
+</div>
+<div class="form-group">
+            <label for="logoname">ما هو محتوى شعارك / اسم الشركة؟</label>
+            <input
+                name="logoname"
+                type="text"
+                class="form-control"
+                id="logoname"
+                placeholder="قم بإدخال محتوى الشعار " />
+                <span data-validate-for="logoname"></span>
+</div>
+<div class="form-group">
+            <label for="description">صف عملك أو المنتج</label>
+            <textarea
+                name="description"
+                type="text"
+                class="form-control"
+                id="description" 
+                row=7
+                placeholder="قم بإدخال وصف للعملك أو منتج " ></textarea>
+                <span data-validate-for="description"></span>
+</div>
+<div class="form-group">
+            <label for="more">هل لديك أي معلومات أخرى تريد أن يعرفها المصممين؟</label>
+            <textarea
+                name="more_info"
+                type="text"
+                class="form-control textarea"
+                id="more" 
+                placeholder="قم بإدخال أي معلومات أخرى " ></textarea>
+</div>
+
+<div class="form-group">
+<label>نمط علامتك التجارية</label>
+  <div class="flex_slide_form">
+    <span>كلاسيكي</span>
+    <span>حديث</span>
+  </div>
+  <input type="range" name="slide_1" min="0" max="10" value="5" class="slider" id="myRange">
+ <div class="flex_slide_form">
+    <span>ناضج</span>
+    <span>شاب</span>
+  </div>
+  <input type="range" name="slide_2" min="0" max="10" value="5" class="slider" id="myRange">
+  <div class="flex_slide_form">
+    <span>الإناث</span>
+    <span>الرجال</span>
+  </div>
+  <input type="range" name="slide_3" min="0" max="10" value="5" class="slider" id="myRange">
+  <div class="flex_slide_form">
+    <span>حرفي</span>
+    <span>تجريدي</span>
+  </div>
+  <input type="range" name="slide_4" min="0" max="10" value="5" class="slider" id="myRange">
+</div>
+
+<div class="form-group">
+<label>الألوان المفضلة</label>
+<div class="flex_color">
+<label>
+  <input type="checkbox" name="color" value="small">
+  <img src="{{'assets/images/colors/blue.png'|theme}}" width='100'>
+  <span>أزرق</span>
+</label>
+<label>
+  <input type="checkbox" name="color" value="big">
+  <img src="{{'assets/images/colors/green.png'|theme}}" width='100'>
+  <span>أخضر</span>
+</label>
+<label>
+  <input type="checkbox" name="color" value="big">
+  <img src="{{'assets/images/colors/yellow.png'|theme}}" width='100'>
+  <span>أصفر</span>
+</label>
+<label>
+  <input type="checkbox" name="color" value="big">
+  <img src="{{'assets/images/colors/red.png'|theme}}" width='100'>
+  <span>أحمر</span>
+</label>
+<label>
+  <input type="checkbox" name="color" value="big">
+  <img src="{{'assets/images/colors/pink.png'|theme}}" width='100'>
+  <span>وردي</span>
+</label>
+<label>
+  <input type="checkbox" name="color" value="big">
+  <img src="{{'assets/images/colors/orange.png'|theme}}" width='100'>
+  <span>برتقالي</span>
+</label>
+<label>
+  <input type="checkbox" name="color" value="big">
+  <img src="{{'assets/images/colors/purple.png'|theme}}" width='100'>
+  <span>بنفسجي</span>
+</label>
+<label>
+  <input type="checkbox" name="color" value="big">
+  <img src="{{'assets/images/colors/light.png'|theme}}" width='100'>
+  <span>أبيض</span>
+</label>
+<label>
+  <input type="checkbox" name="color" value="big">
+  <img src="{{'assets/images/colors/dark.png'|theme}}" width='100'>
+  <span>أسود</span>
+</label>
+<label>
+  <input type="checkbox" name="color" value="big">
+  <img src="{{'assets/images/colors/random.png'|theme}}" width='100'>
+  <span>دع المصممين يقدمون اقتراحات</span>
+</label>
+</div>
+</div>
+
+
+        <button type="submit" class="btn btn-primary">نشر المسابقة</button>
+</form>

@@ -1,0 +1,11 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table freelance_service_index'
+    - builder_table_create_freelance_service_index.php
+1.0.3:
+    - 'Created table freelance_service_category'
+    - builder_table_create_freelance_service_category.php
+1.0.4:
+    - 'Updated table freelance_service_index'
+    - builder_table_update_freelance_service_index.php

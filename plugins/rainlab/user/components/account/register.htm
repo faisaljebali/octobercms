@@ -1,25 +1,38 @@
 {% if canRegister %}
-    <h3>Register</h3>
-
-{{ form_ajax('onRegister',{'files': 'true'}) }}
+ <form data-request="onRegister" class="contact-form" data-request-validate data-request-flash>
+  
     <div class="form-group">
-            <label for="registerName">Full Name</label>
+            <label for="registerName">الاسم</label>
             <input
                 name="name"
                 type="text"
                 class="form-control"
                 id="registerName"
-                placeholder="Enter your full name" />
+                placeholder="أكتب اسمك باللغة العربية" />
+                <span data-validate-for="name"></span>
         </div>
 
+    <div class="form-group">
+            <label for="registerName">اسم العائلة</label>
+            <input
+                name="last_name"
+                type="text"
+                class="form-control"
+                id="registerName"
+                placeholder="أكتب اسم العائلة هنا باللغة العربية" />
+                <span data-validate-for="last_name"></span>
+        </div>
+
+
         <div class="form-group">
-            <label for="registerEmail">Email</label>
+            <label for="registerEmail">البريد الإلكتروني</label>
             <input
                 name="email"
                 type="email"
                 class="form-control"
                 id="registerEmail"
-                placeholder="Enter your email" />
+                placeholder="أدخل البريد الإلكتروني الخاص بك" />
+            <span data-validate-for="email"></span>
         </div>
 
         {% if loginAttribute == "username" %}
@@ -35,19 +48,26 @@
         {% endif %}
 
         <div class="form-group">
-            <label for="registerPassword">Password</label>
+            <label for="registerPassword">كلمة المرور</label>
             <input
                 name="password"
                 type="password"
                 class="form-control"
                 id="registerPassword"
-                placeholder="Choose a password" />
+                placeholder="أدخل كلمة المرور الخاصة بك" />
+            <span data-validate-for="password"></span>
         </div>
 
-
-        <button type="submit" class="btn btn-default">Register</button>
-
-        {{ form_close() }}
+    <label for="registerPassword">التسجيل ك</label>  
+      <div class="form-group type_account">
+        <div><input type="radio" name="type" value="2"> مصمم (أقوم بالمشاركة في المسابقات)</div>
+        <div><input type="radio" name="type" value="1"> عميل (أقوم بإنشاء المسابقات)</div>
+        <span data-validate-for="type"></span>
+      </div>
+        <button type="submit" class="btn btn-default">تسجيل</button>
+</form>
 {% else %}
     <!-- Registration is disabled. -->
 {% endif %}
+
+<div id="result"></div>
